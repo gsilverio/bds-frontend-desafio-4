@@ -1,0 +1,36 @@
+.movies-info-container {
+  padding: 12px 20px 0px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.movies-info-container h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+.movies-info-container a {
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+
+@media (min-width: 576px) {
+  .movies-info-container {
+    padding: 40px 0px 40px 40px;
+  }
+  .movies-info-container h1 {
+    font-size: 48px;
+    line-height: 65px;
+  }
+  .movies-info-container a {
+    font-size: 24px;
+    line-height: 33px;
+  }
+}

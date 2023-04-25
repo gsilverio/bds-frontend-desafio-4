@@ -1,0 +1,20 @@
+.main-review-container {
+  padding: 10px;
+}
+
+.main-review-container h1 {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: -0.015em;
+
+  color: #ffffff;
+}
+.reviewform {
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .main-review-container h1 {
+    font-size: 48px;
+  }
+}
