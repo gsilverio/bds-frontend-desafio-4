@@ -1,9 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
-import { useState, useEffect } from "react";
 import "./styles.css";
-import { resquestBackend } from "../../util/requests";
-import { Moviess } from "../../types/movies";
-import { SpringPage } from "../../util/vendor/spring";
 import { Link } from "react-router-dom";
 
 const Movies = () => {

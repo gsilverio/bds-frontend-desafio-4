@@ -1,8 +1,10 @@
 .navbar-container {
   padding-left: 18px;
+  padding-right: 18px;
   min-height: 70px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .navbar-container h3 {
   font-weight: 700;
@@ -10,4 +12,8 @@
   line-height: 33px;
   letter-spacing: -0.015em;
   color: #000000;
+}
+
+.log-container h3 {
+  font-size: 18px;
 }

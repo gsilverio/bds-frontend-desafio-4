@@ -1,7 +1,14 @@
 import qs from "qs";
 import axios, { AxiosRequestConfig } from "axios";
-import { config } from "process";
-import { reduceEachTrailingCommentRange } from "typescript";
+import jwtDecode from "jwt-decode";
+
+export type Role = "ROLE_MEMBER" | "ROLE_VISITOR";
+
+export type TokenData = {
+  exp: number;
+  user_name: string;
+  authorities: Role[];
+};
 
 type LoginResponse = {
   access_token: string;
@@ -11,6 +18,13 @@ type LoginResponse = {
   scope: string;
   userName: string;
   userId: number;
+};
+
+export const isMember = (): boolean => {
+  const role = getTokenData()?.authorities?.toString();
+  if (role === "ROLE_MEMBER") {
+    return true;
+  } else return false;
 };
 
 const tokenKey = "authData";
@@ -28,6 +42,11 @@ const basicHeader = () => {
 type LoginData = {
   username: string;
   password: string;
+};
+
+type FormData = {
+  text: string;
+  movieId: number;
 };
 
 export const requestBackendLogin = (loginData: LoginData) => {
@@ -64,8 +83,27 @@ export const saveAuthData = (obj: LoginResponse) => {
   localStorage.setItem(tokenKey, JSON.stringify(obj));
 };
 
+export const removeAuthData = () => {
+  localStorage.removeItem(tokenKey);
+};
+
 export const getAuthData = () => {
   const str = localStorage.getItem(tokenKey) ?? "{}";
   const obj = JSON.parse(str);
   return obj as LoginResponse;
+};
+
+export const getTokenData = (): TokenData | undefined => {
+  const loginResponse = getAuthData();
+  try {
+    return jwtDecode(loginResponse.access_token) as TokenData;
+  } catch (error) {
+    return undefined;
+  }
+};
+
+export const isAuthhenticated = (): boolean => {
+  const tokenData = getTokenData();
+
+  return tokenData && tokenData.exp * 1000 > Date.now() ? true : false;
 };

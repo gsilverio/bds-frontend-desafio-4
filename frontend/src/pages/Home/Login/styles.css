@@ -57,6 +57,9 @@
   letter-spacing: -0.015em;
   color: #000000;
 }
+.invalid-div {
+  text-align: start;
+}
 @media (min-width: 576px) {
   .login-card {
     width: 480px;

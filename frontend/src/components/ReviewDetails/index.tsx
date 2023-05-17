@@ -1,41 +1,28 @@
-import { useEffect, useState } from "react";
 import { Reviews } from "../../types/reviews";
-import { resquestBackend } from "../../util/requests";
-import { AxiosRequestConfig } from "axios";
 import star from "../../assets/images/star.png";
 import "./styles.css";
+
 type Props = {
   movieId: string;
+  reviewList: Reviews[];
 };
 
-const ReviewDetails = ({ movieId }: Props) => {
-  const [review, setReview] = useState<Reviews[]>([]);
-  useEffect(() => {
-    const params: AxiosRequestConfig = {
-      method: "GET",
-      url: `/movies/${movieId}/reviews`,
-      withCredentials: true,
-    };
-
-    resquestBackend(params).then((response) => {
-      setReview(response.data);
-    });
-  }, [movieId]);
-
+const ReviewDetails = ({ movieId, reviewList }: Props) => {
   return (
     <>
       <div className="main-details-container">
-        {review.map((review) => (
-          <div className="details-container" key={review.id}>
+        {reviewList.map((reviewList) => (
+          <div className="details-container" key={reviewList.id}>
             <div id="detail-name">
               <img src={star} alt="" />
-              <h1>{review.user.name}</h1>
+              <h1>{reviewList.user.name}</h1>
             </div>
-            <p>{review.text}</p>
+            <p>{reviewList.text}</p>
           </div>
         ))}
       </div>
     </>
   );
 };
+
 export default ReviewDetails;
