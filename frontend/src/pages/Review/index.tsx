@@ -7,12 +7,14 @@ import { isMember, resquestBackend } from "../../util/requests";
 import { Reviews } from "../../types/reviews";
 import { useEffect, useState } from "react";
 import { AxiosRequestConfig } from "axios";
+import Select from "react-select";
 
 type UrlParams = {
   movieId: string;
 };
 
 const Review = () => {
+  
   const { movieId } = useParams<UrlParams>();
   const [review, setReview] = useState<Reviews[]>([]);
   useEffect(() => {
@@ -35,6 +37,7 @@ const Review = () => {
   return (
     <>
       <div className="main-review-container">
+
         <h1>Tela detalhes do filme id: {movieId}</h1>
         {isMember() && (
           <div className="base-card reviewform">
@@ -43,6 +46,7 @@ const Review = () => {
               onInsertReview={handleInsertReview}
             />
           </div>
+          
         )}
         <div className="base-card">
           <ReviewDetails movieId={movieId ?? ""} reviewList={review} />

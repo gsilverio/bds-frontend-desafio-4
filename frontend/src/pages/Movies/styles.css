@@ -2,7 +2,7 @@
   padding: 12px 20px 0px 15px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
 }
 .movies-info-container h1 {
@@ -20,7 +20,17 @@
   letter-spacing: -0.015em;
   color: #ffffff;
 }
-
+.crud-select{
+  width: 300px;
+  padding: 10px;
+}
+.prefix-crud-select__control {
+    
+  background-color: #6c6c6c !important;
+}
+.prefix-crud-select__placeholder{
+  color: #e1e1e1 !important;
+}
 @media (min-width: 576px) {
   .movies-info-container {
     padding: 40px 0px 40px 40px;

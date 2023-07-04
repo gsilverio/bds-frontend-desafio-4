@@ -3,6 +3,7 @@ import "./styles.css";
 import { resquestBackend } from "../../util/requests";
 import { AxiosRequestConfig } from "axios";
 import { Reviews } from "../../types/reviews";
+import Select from "react-select";
 type Props = {
   movieId: string;
   onInsertReview: (review: Reviews) => void;
@@ -14,6 +15,8 @@ type FormData = {
 };
 
 const ReviewForm = ({ movieId, onInsertReview }: Props) => {
+  
+
   const {
     register,
     handleSubmit,
