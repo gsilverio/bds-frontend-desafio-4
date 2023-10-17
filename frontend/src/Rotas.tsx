@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -14,8 +14,16 @@ const Rotas = () => (
       <Route path="/" element={<Home />} />
       <Route element={<PrivateRoute role={["ROLE_MEMBER"]} />}>
         <Route path="/movies" element={<Movies />} />
-        <Route path="movies/:movieId" element={<Review />} />
+        <Route
+          path="movies/:movieId"
+          element={
+            <>
+              <Review />
+            </>
+          }
+        />
       </Route>
+      <Route path="*" element={<Navigate to="/movies" />} />
     </Routes>
   </HistoryRouter>
 );

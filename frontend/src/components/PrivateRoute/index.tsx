@@ -6,7 +6,7 @@ export type Props = {
 };
 
 const PrivateRoute = ({ role = [] }: Props) => {
-  return isAuthhenticated() ? <Outlet /> : <Navigate to={{ pathname: "/" }} />;
+  return isAuthhenticated() ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default PrivateRoute;

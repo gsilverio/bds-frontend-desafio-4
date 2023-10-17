@@ -3,7 +3,7 @@ import "./styles.css";
 import { resquestBackend } from "../../util/requests";
 import { AxiosRequestConfig } from "axios";
 import { Reviews } from "../../types/reviews";
-import Select from "react-select";
+import { toast } from "react-toastify";
 type Props = {
   movieId: string;
   onInsertReview: (review: Reviews) => void;
@@ -15,8 +15,6 @@ type FormData = {
 };
 
 const ReviewForm = ({ movieId, onInsertReview }: Props) => {
-  
-
   const {
     register,
     handleSubmit,
@@ -26,8 +24,6 @@ const ReviewForm = ({ movieId, onInsertReview }: Props) => {
 
   const onSubmit = (formData: FormData) => {
     formData.movieId = parseInt(movieId);
-    console.log(formData);
-
     const config: AxiosRequestConfig = {
       method: "POST",
       url: "/reviews",
@@ -39,6 +35,7 @@ const ReviewForm = ({ movieId, onInsertReview }: Props) => {
       .then((response) => {
         setValue("text", "");
         onInsertReview(response.data);
+        toast.info("Comentario salvo com sucesso");
       })
       .catch((error) => {
         console.log("ERROR", error);
@@ -52,11 +49,12 @@ const ReviewForm = ({ movieId, onInsertReview }: Props) => {
             {errors.text?.message}
           </div>
           <input
+            id="form-input"
             {...register("text", { required: "Campo Obrigatorio" })}
             placeholder="Deixe sua avaliacao aqui"
             name="text"
           />
-          <button>
+          <button id="form-button">
             <h1>SALVAR AVALIAÇAO</h1>
           </button>
         </form>

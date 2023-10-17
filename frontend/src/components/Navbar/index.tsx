@@ -35,7 +35,13 @@ const Navbar = () => {
     myHistory.replace("/");
   };
 
-  const handleLogInClick = (event: React.MouseEvent<HTMLAnchorElement>) => {};
+  const handleLogInClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    removeAuthData();
+    setAuthContextData({
+      authenticated: false,
+    });
+  };
 
   return (
     <>
@@ -44,13 +50,9 @@ const Navbar = () => {
           <h3>MovieFlix</h3>
         </Link>
         <div className="log-container">
-          {authContextData.authenticated ? (
+          {authContextData.authenticated && (
             <Link to="/" onClick={handleLogOutClick}>
               <h3>LOGOUT</h3>
-            </Link>
-          ) : (
-            <Link to="/" onClick={handleLogInClick}>
-              <h3>LOGIN</h3>
             </Link>
           )}
         </div>

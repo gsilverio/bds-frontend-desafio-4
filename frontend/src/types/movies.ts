@@ -4,4 +4,5 @@ export type Moviess = {
   subTitle: string;
   year: number;
   imgUrl: string;
+  synopsis: string;
 };

@@ -1,0 +1,53 @@
+.movie-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infor-card {
+  height: 322px;
+  width: 300px;
+  margin-top: 20px;
+}
+
+.img img {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.card-info-details {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 16px;
+}
+.card-info-details h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+}
+
+.card-info-details h4 {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(255, 199, 0, 1);
+}
+
+.card-info-details p {
+  font-size: 14px;
+  line-height: 19px;
+  color: rgba(255, 255, 255, 1);
+}
+
+@media (min-width: 576px) {
+  .infor-card {
+    width: 258px;
+  }
+}
+
+@media (min-width: 768px) {
+  .infor-card {
+    width: 324px;
+    height: 364px;
+  }
+}
